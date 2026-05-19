@@ -1,0 +1,19 @@
+import mongoose, { Types } from 'mongoose';
+
+const schema = mongoose.Schema
+
+const messageSchema = new schema({
+    senderId:{
+        type:Types.ObjectId,
+        ref:"Users",
+        required:true,
+    },
+    senderName:{
+        type:String,
+        required:true
+    },
+    message:{
+        type:String,
+        required:true
+    }
+},{timestamps:true})
