@@ -39,10 +39,6 @@ const {messages,handleSend,loading}= useSocket()
   offline: "#A1A1AA",
 }
 
-// const {data,error}= await authClient.getSession()
-
-// const currentUser = data?.user as unknown as ChatUser
-
   return (
  <ChatProvider currentUser={currentUser} theme="lunar">
    <div className="flex h-screen flex-col">
