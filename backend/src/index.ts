@@ -7,6 +7,7 @@ import { createServer } from 'node:http';
 
 import { auth } from "./auth.ts";
 import './db.ts';
+import { chatrouter } from './routes/chat.route.ts';
 import { initSocket } from './socket/socket.ts';
 
 const PORT = process.env.PORT || 5000
@@ -28,10 +29,13 @@ app.use(
 app.all("/api/auth/*splat", toNodeHandler(auth)); 
 
 
+
 // Mount express json middleware after Better Auth handler
 // or only apply it to routes that don't interact with Better Auth
 app.use(express.json())
 
+
+app.use("/api/chat",chatrouter)
 
 // socket.io server
 initSocket(server)

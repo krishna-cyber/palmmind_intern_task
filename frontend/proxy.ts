@@ -12,7 +12,7 @@ export async function proxy(request: NextRequest) {
         }
     )
    
-const isHomePage = request.nextUrl.pathname === "/"
+            const isHomePage = request.nextUrl.pathname === "/"
 
         if(!data) {
             return NextResponse.redirect(new URL("/sign-in", request.url));

@@ -12,7 +12,7 @@ export const useSocket = ()=>{
 
   const loadHistory = async ()=>{
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/chat/history`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat/history`)
       if (!response.ok) {
         throw new Error("Failed to load chat history")
       }
@@ -26,22 +26,20 @@ export const useSocket = ()=>{
   }
 
   useEffect(() => {
-    // loadHistory()
+    loadHistory()
 
     // establish socket connection
     socket.connect()
 
-   
-    
-
     // catch broadcasted messages
     socket.on("receive_message", (message: ChatMessageData) => {
-      console.log("Received message via socket:", message)
       setMessages((prev) => [...prev, message])
     })
      socket.on("connect_error", (err) => {
     console.error("Connection failed:", err.message); 
   });
+
+    setLoading(false)
   
     return () => {
       socket.off("receive_message")

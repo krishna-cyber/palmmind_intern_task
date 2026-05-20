@@ -2,6 +2,7 @@ export interface ChatUser {
   id: string
   name: string
   avatar?: string
+  image?:string
   status?: "online" | "away" | "dnd" | "offline"
   emailVerified?: boolean
   role?: string | null | undefined
