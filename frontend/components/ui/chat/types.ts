@@ -1,5 +1,5 @@
 export interface ChatUser {
-  id: string
+  _id: string
   name: string
   avatar?: string
   status?: "online" | "away" | "dnd" | "offline"
@@ -11,7 +11,7 @@ export interface ChatUser {
 }
 
 export interface ChatMessageData {
-  id: string
+  _id: string
   senderId: string
   senderName: string
   senderAvatar?: string

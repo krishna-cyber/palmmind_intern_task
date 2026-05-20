@@ -3,12 +3,17 @@ import 'dotenv/config';
 import { toNodeHandler } from "better-auth/node";
 import cors from "cors";
 import express from 'express';
+import { createServer } from 'node:http';
+
 import { auth } from "./auth.ts";
 import './db.ts';
+import { initSocket } from './socket/socket.ts';
 
 const PORT = process.env.PORT || 5000
 
 const app = express()
+
+const server = createServer(app)
 
 // Configure CORS middleware
 app.use(
@@ -28,6 +33,12 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json())
 
 
-app.listen(PORT, ()=>{
+// socket.io server
+initSocket(server)
+
+// listen to socket server and http server
+server.listen(PORT, ()=>{
     console.log(`Server is running on port ${PORT}...`)
 })
+
+export { app };

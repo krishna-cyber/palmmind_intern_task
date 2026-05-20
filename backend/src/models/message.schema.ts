@@ -12,7 +12,7 @@ const messageSchema = new schema({
         type:String,
         required:true
     },
-    message:{
+    text:{
         type:String,
         required:true
     }
