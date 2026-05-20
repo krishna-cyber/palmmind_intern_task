@@ -16,7 +16,7 @@ import { useCallback, useState } from "react"
 
 
 const currentUser: ChatUser = {
-  _id: "user-1",
+  id: "user-1",
   name: "You",
   status: "online",
   role:"admin"
@@ -24,7 +24,7 @@ const currentUser: ChatUser = {
 
 const messages: ChatMessageData[] = [
   {
-    _id: "1",
+    id: "1",
     senderId: "user-2",
     senderName: "Alice",
     text: "Hey! How are you?",
@@ -32,7 +32,7 @@ const messages: ChatMessageData[] = [
     status: "read",
   },
   {
-    _id: "2",
+    id: "2",
     senderId: "user-1",
     senderName: "You",
     text: "Doing great! Working on the new chat UI.",
@@ -41,40 +41,30 @@ const messages: ChatMessageData[] = [
   },
 ]
 const MyChatPage =  () => {
-  useSocket()
+//  const {handleSend,messages,loading}= useSocket()
+const {messages,handleSend,loading}= useSocket()
 
   
-   const [messages, setMessages] = useState<ChatMessageData[]>([
-  {
-    _id: "1",
-    senderId: "user-2",
-    senderName: "Alice",
-    text: "Hey! How are you?",
-    timestamp: Date.now() - 60000,
-    status: "read",
-  },
-  {
-    _id: "2",
-    senderId: "user-1",
-    senderName: "You",
-    text: "Doing great! Working on the new chat UI.",
-    timestamp: Date.now() - 30000,
-    status: "delivered",
-  },
-])
-  const handleSend = useCallback((text: string) => {
-    setMessages((prev) => [
-      ...prev,
-      {
-        _id: crypto.randomUUID(),
-        senderId: currentUser._id,
-        senderName: currentUser.name,
-        timestamp: Date.now(),
-        text,
-        status: "sent",
-      },
-    ])
-  }, [])
+//    const [messages, setMessages] = useState<ChatMessageData[]>([
+//   {
+//     id: "1",
+//     senderId: "user-2",
+//     senderName: "Alice",
+//     text: "Hey! How are you?",
+//     timestamp: Date.now() - 60000,
+//     status: "read",
+//   },
+//   {
+//     id: "2",
+//     senderId: "user-1",
+//     senderName: "You",
+//     text: "Doing great! Working on the new chat UI.",
+//     timestamp: Date.now() - 30000,
+//     status: "delivered",
+//   },
+  
+// ])
+
 
   const presenceColors = {
   online: "#22C55E",
