@@ -54,7 +54,7 @@ io.on("connection",(socket)=>{
 
       const savedMessage = await message.save()
 
-      console.log("Message saved and broadcasted:", savedMessage)
+   
 
 
       const formattedMessage = {
