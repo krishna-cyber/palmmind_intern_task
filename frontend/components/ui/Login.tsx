@@ -40,6 +40,11 @@ const Login = () => {
       password: data.password, // required
       rememberMe: true,
       callbackURL: "/chat",
+      fetchOptions:{
+        onError:(ctx)=>{
+          toast.error(ctx.error?.message)
+        }
+      }
       
     }) 
   }
