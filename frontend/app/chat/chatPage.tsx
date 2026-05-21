@@ -3,9 +3,9 @@ import { Avatar, AvatarBadge, AvatarFallback, AvatarImage } from "@/components/u
 import { Button } from "@/components/ui/button"
 import type { ChatUser } from "@/components/ui/chat"
 import {
-    ChatComposer,
-    ChatMessages,
-    ChatProvider,
+  ChatComposer,
+  ChatMessages,
+  ChatProvider,
 } from "@/components/ui/chat"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Separator } from "@/components/ui/separator"
@@ -13,7 +13,6 @@ import { useSocket } from "@/hooks/useSocket"
 import { authClient } from "@/lib/auth-client"
 
 import { EllipsisVertical, LogOut, UserPen, Users } from "lucide-react"
-import { redirect } from "next/navigation"
 
 
 
@@ -50,7 +49,7 @@ const {messages,handleSend,loading}= useSocket()
          width: 10,
        height: 10,
        borderRadius: "50%",
-       background:currentUser?.status ? presenceColors[currentUser?.status] : presenceColors["offline"],
+       background:currentUser?.status ? presenceColors[currentUser?.status] : presenceColors["online"],
        border: "2px solid #fff",
 
        }} />
